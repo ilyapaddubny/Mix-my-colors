@@ -2,13 +2,9 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Experience seamless tracking and goal achievement with LumiCount. Count steps, calories, habits, and more. Visualize progress effortlessly, set limitless goals, and stay motivated on your path to success.
+Mix My Colors is an app that allows users to mix different colors to create new ones. 
 
-## Features
-
-- **Count Anything:** Easily tally your progress in various aspects of life.
-- **Goal Without Limits:** No restrictions on the number of goals you can set.
-- **Stay Motivated:** Watch your progress and achievements soar.
+The app designed to used to get hands-on practice with UIKit concepts and to explore color theory and the foundations of UIKit-driven UI elements.
 
 ## Screenshots
 <p align="center">
@@ -28,11 +24,6 @@ Experience seamless tracking and goal achievement with LumiCount. Count steps, c
 </p>
 
 
-## App Store
-
-Get LumiCount on the App Store:
-[Download on the App Store](https://apps.apple.com/ee/app/lumicount/id6450320791)
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -43,5 +34,5 @@ For support or questions, contact us at [ilyapaddubny@gmail.com](mailto:ilyapadd
 
 ---
 <p align="center">
-  <img src="https://github.com/ilyapaddubny/LumiCount/assets/33945343/8b09ae33-61eb-48b9-9262-0c597586656a" width="80" alt="App Icon">
+  <img src="https://github.com/ilyapaddubny/Mix-my-colors/blob/master/Mix%20my%20colors/Assets.xcassets/AppIcon.appiconset/AppIcon~ios-marketing.png" width="80" alt="App Icon">
 </p>
