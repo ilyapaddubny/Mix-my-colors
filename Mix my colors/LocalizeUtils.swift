@@ -41,7 +41,7 @@ class LocalizeUtils: NSObject {
     /// - Important: Make sure to specify the appropriate localization table where
     ///   the translations for color names are stored.
     func colorNameLocalizer(_ colorName: String) -> String {
-        var translatedWords = colorName.components(separatedBy: " ").map {
+        let translatedWords = colorName.components(separatedBy: " ").map {
             appbundle.localizedString(forKey: $0, value: "", table: nil)
         }
         

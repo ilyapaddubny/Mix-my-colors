@@ -22,8 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             
             // Create the root view controller
-            let viewController = ViewController()
-            
+            let viewController = MixMyColorsVC()
+            viewController.view.backgroundColor = .systemBackground
             // Embed the view controller in a navigation controller
             let navigationController = UINavigationController(rootViewController: viewController)
             
@@ -51,6 +51,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillResignActive(_ scene: UIScene) {
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
+       
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {

@@ -8,7 +8,7 @@
 import UIKit
 
 
-class ViewController: UIViewController, ColorPickerViewDelegate, UIColorPickerViewControllerDelegate {
+class MixMyColorsVC: UIViewController, ColorPickerViewDelegate, UIColorPickerViewControllerDelegate {
     var firstColorPicker: ColorPickerView!
     var activeColorPicker: ColorPickerView?
     let resultLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 50))
@@ -68,7 +68,6 @@ class ViewController: UIViewController, ColorPickerViewDelegate, UIColorPickerVi
     private func configureResultView() {
         view.addSubview(resultView)
         resultView.translatesAutoresizingMaskIntoConstraints = false
-        resultView.backgroundColor = .white
         
         NSLayoutConstraint.activate([
             resultView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -82,6 +81,7 @@ class ViewController: UIViewController, ColorPickerViewDelegate, UIColorPickerVi
     func presentColorPicker(for colorPicker: ColorPickerView) {
         activeColorPicker = colorPicker
         let colorPickerVC = UIColorPickerViewController()
+        colorPickerVC.selectedColor = colorPicker.colorCircleButton.backgroundColor ?? .black
         colorPickerVC.supportsAlpha = false
         colorPickerVC.delegate = self
         present(colorPickerVC, animated: true)
@@ -132,15 +132,15 @@ class ViewController: UIViewController, ColorPickerViewDelegate, UIColorPickerVi
     }
     
     func configureLanguageSegmentController() {
-        // Set the frame and position it in the bottom-left corner
+        // The position is in the bottom-left corner
         let screenHeight = UIScreen.main.bounds.height
         let segmentWidth: CGFloat = 80
         let segmentHeight: CGFloat = 30
         let segmentX = 20
-        let segmentY = Int(screenHeight) - 40 - Int(segmentHeight) // 20 points from bottom
+        let segmentY = Int(screenHeight) - 40 - Int(segmentHeight)
         segmentedControl.frame = CGRect(x: CGFloat(segmentX), y: CGFloat(segmentY), width: segmentWidth, height: segmentHeight)
         
-        // Set the initial selected segment index
+        segmentedControl.backgroundColor = .lightGray
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(self, action: #selector(languageChanged(_:)), for: .valueChanged)
         
