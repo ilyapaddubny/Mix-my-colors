@@ -4,7 +4,7 @@
 
 Mix My Colors is an app that allows users to mix different colors to create new ones. 
 
-The app designed to used to get hands-on practice with UIKit concepts and to explore color theory and the foundations of UIKit-driven UI elements.
+The app designed to get hands-on practice with UIKit concepts and to explore color theory and the foundations of UIKit-driven UI elements.
 
 ## Screenshots
 <p align="center">
