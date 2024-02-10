@@ -1,6 +1,6 @@
 # Mix my colors
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](License)
 
 Mix My Colors is an app that allows users to mix different colors to create new ones. 
 
@@ -26,7 +26,7 @@ The app designed to get hands-on practice with UIKit concepts and to explore col
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](License) file for details.
 
 ## Support
 
