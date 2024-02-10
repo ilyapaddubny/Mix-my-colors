@@ -9,22 +9,26 @@ import UIKit
 
 
 class ViewController: UIViewController, ColorPickerViewDelegate, UIColorPickerViewControllerDelegate {
-    let firstColorPicker = ColorPickerView()
+    var firstColorPicker: ColorPickerView!
     var activeColorPicker: ColorPickerView?
     let resultLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 50))
-    
-    let secondColorPicker = ColorPickerView()
+    let segmentedControl = UISegmentedControl(items: ["RU", "EN"])
+    var secondColorPicker: ColorPickerView!
+    let defaultLocalizer = LocalizeUtils.defaultLocalizer
     
     let resultView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        defaultLocalizer.setSelectedLanguage(lang: "ru")
+        firstColorPicker = ColorPickerView()
+        secondColorPicker = ColorPickerView()
         firstColorPicker.delegate = self
         secondColorPicker.delegate = self
         configureUI()
         mixResultColor()
+        self.title = defaultLocalizer.stringFor(key: "Mix my colors")
         
-        self.title = "Mix my colors"
     }
     
     func configureUI() {
@@ -32,6 +36,7 @@ class ViewController: UIViewController, ColorPickerViewDelegate, UIColorPickerVi
         configureSecondPicker()
         configureResultView()
         configureResultLabel()
+        configureLanguageSegmentController()
     }
     
     private func configureFirstPicker() {
@@ -123,14 +128,52 @@ class ViewController: UIViewController, ColorPickerViewDelegate, UIColorPickerVi
             resultLabel.bottomAnchor.constraint(equalTo: resultView.topAnchor, constant: -6),
         ])
         
-        if let colorDescription = resultView.backgroundColor?.accessibilityName {
-            resultLabel.text = colorDescription.capitalized
-            print(colorDescription)
-        }
-        
-        
+        updateResultColorLabel()
     }
     
+    func configureLanguageSegmentController() {
+        // Set the frame and position it in the bottom-left corner
+        let screenHeight = UIScreen.main.bounds.height
+        let segmentWidth: CGFloat = 80
+        let segmentHeight: CGFloat = 30
+        let segmentX = 20
+        let segmentY = Int(screenHeight) - 40 - Int(segmentHeight) // 20 points from bottom
+        segmentedControl.frame = CGRect(x: CGFloat(segmentX), y: CGFloat(segmentY), width: segmentWidth, height: segmentHeight)
+        
+        // Set the initial selected segment index
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.addTarget(self, action: #selector(languageChanged(_:)), for: .valueChanged)
+        
+        view.addSubview(segmentedControl)
+    }
+    
+    @objc func languageChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            defaultLocalizer.setSelectedLanguage(lang: "ru")
+            
+        case 1:
+            defaultLocalizer.setSelectedLanguage(lang: "en")
+            
+        default:
+            break
+        }
+        
+        self.refreshlabels()
+    }
+    
+    func refreshlabels() {
+        self.title = defaultLocalizer.stringFor(key: "Mix my colors")
+        firstColorPicker.updateColorLabel()
+        secondColorPicker.updateColorLabel()
+        updateResultColorLabel()
+    }
+    
+    func updateResultColorLabel() {
+        if let colorDescription = resultView.backgroundColor?.accessibilityName {
+            resultLabel.text = defaultLocalizer.colorNameLocalizer(colorDescription)
+        }
+    }
     
 }
 

@@ -14,6 +14,7 @@ protocol ColorPickerViewDelegate: AnyObject {
 class ColorPickerView: UIView  {
     weak var delegate: ColorPickerViewDelegate?
 
+    let defaultLocalizer = LocalizeUtils.defaultLocalizer
     let colorLabel = UILabel()
     let colorCircleButton = UIButton(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
     
@@ -62,6 +63,8 @@ class ColorPickerView: UIView  {
         
         colorCircleButton.backgroundColor = .red
         colorCircleButton.layer.cornerRadius = colorCircleButton.frame.height / 2.0
+        colorCircleButton.layer.borderWidth = 4.0
+        colorCircleButton.layer.borderColor = UIColor.gray.cgColor
         colorCircleButton.addTarget(self, action: #selector(onButtonTapped), for: .touchUpInside) // Add this line
     }
     
@@ -71,8 +74,7 @@ class ColorPickerView: UIView  {
     
     func updateColorLabel() {
         if let colorDescription = colorCircleButton.backgroundColor?.accessibilityName {
-            colorLabel.text = colorDescription.capitalized
-            print(colorDescription)
+            colorLabel.text = defaultLocalizer.colorNameLocalizer(colorDescription)
         }
     }
     
